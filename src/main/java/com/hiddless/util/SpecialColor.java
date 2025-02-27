@@ -1,4 +1,4 @@
-package util;
+package com.hiddless.util;
 
 public class SpecialColor {
     public static final String RESET = "\033[0m";  // Renk sıfırlama

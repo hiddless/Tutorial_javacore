@@ -1,6 +1,7 @@
-package dao;
+package com.hiddless.dao;
 
 import java.sql.Connection;
+import java.util.List;
 
 public interface IDaoGenerics<T> {
 
@@ -10,9 +11,10 @@ public interface IDaoGenerics<T> {
 
     /// FindbyName
     T findByName(String name);
+    T findById(int id);
 
     /// List
-    ArrayList<T> list();
+    List<T> list();
 
     /// Update
     T update(int id, T t);
@@ -21,12 +23,10 @@ public interface IDaoGenerics<T> {
     T delete(int id);
 
     /// Chooise
-    public void chooise();
+    void chooise();
 
     /// Body Method
     default Connection getInterfaceConnection(){
         return null;
     }
-
-
 }
