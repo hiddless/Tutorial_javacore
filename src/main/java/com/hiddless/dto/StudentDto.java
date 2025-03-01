@@ -18,51 +18,64 @@ import java.util.Date;
 
 public class StudentDto implements Serializable {
 
-    /// Serileştirelim
+    // Serileştirme
     private static final long serialVersionUID = 556364655645656546L;
 
-    /// Field
+    // Field
     private Integer id;
     private String name;
     private String surname;
-    private EStudentType eStudentType;
-    private Double midTerm;
-    private Double finalTerm;
-    private Double resultTerm;
-    private LocalDate birthDate;
-    private Date createdDate;
+    private EStudentType eStudentType; // Enum Öğrenci Türü
+    private Double midTerm;      // Vize notu
+    private Double finalTerm;    // Final notu
+    private Double resultTerm=0.0;   // Sonuç Notu: (Vize%40 + Final%60)
+    private String status;       // Geçti mi ? Kaldı mı ?
+    private LocalDate birthDate; // Doğum günü
+    private Date createdDate;    // Sistem otomatik tarihi
 
-    /// static
+    // static (Nesne boyunca 1 kere oluşturulur)
     static {
-        System.out.println(SpecialColor.CYAN+ "static StudentDto Yüklendi" +SpecialColor.RESET);
+        System.out.println(SpecialColor.BLUE + "static StudentDto Yüklendi" + SpecialColor.RESET);
     }
 
-    /// Parametresiz Constructor
+    // Parametresiz Constructor
     public StudentDto() {
+        this.resultTerm=0.0; // varsayılan olarak
+        this.createdDate = new Date(System.currentTimeMillis());
     }
 
-    /// Parametreli Constructor
+    // Parametreli Constructor
     public StudentDto(Integer id, String name, String surname, Double midTerm, Double finalTerm, LocalDate birthDate, EStudentType eStudentType) {
         this.id = id;
-        this.name= name;
-        this.surname= surname;
-        this.midTerm= midTerm;
-        this.finalTerm= finalTerm;
-        this.birthDate= birthDate;
-        this.createdDate= new Date(System.currentTimeMillis());
-        this.resultTerm= calculateResult();
-        this.eStudentType= eStudentType;
+        this.name = name;
+        this.surname = surname;
+        this.midTerm = midTerm;
+        this.finalTerm = finalTerm;
+        this.resultTerm = calculateResult();
+        this.status = determineStatus();
+        this.eStudentType = eStudentType;
+        this.birthDate = birthDate;
+        this.createdDate = new Date(System.currentTimeMillis());
     }
 
-    /// Metotlar
-    //Vize ve Final Calculate
+    // Metotlar
+    // Vize ve Final Calculate
+    // **📌 Sonuç Notu Hesaplama (Vize %40 + Final %60)**
     private Double calculateResult() {
-        if (midTerm==null || finalTerm==null)
+        if (midTerm == null || finalTerm == null)
             return 0.0;
         else
-            return (midTerm*0.4+finalTerm*0.6);
+            return (midTerm * 0.4 + finalTerm * 0.6);
     }
 
+    // **📌 Status: Geçme / Kalma**
+    private String determineStatus() {
+        if (this.resultTerm == null) return "Bilinmiyor"; // **Null kontrolü ekledik**
+        return (this.resultTerm >= 50.0) ? "Geçti" : "Kaldı";
+    }
+
+
+    /// ///////////////////////////////////////////////////////////////////////////////
     // Getter And Setter
     public Integer getId() {
         return id;
@@ -71,13 +84,15 @@ public class StudentDto implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
+
     public String getSurname() {
         return surname;
     }
@@ -86,19 +101,12 @@ public class StudentDto implements Serializable {
         this.surname = surname;
     }
 
-    public LocalDate getBirthDate(){
-        return birthDate;
+    public EStudentType geteStudentType() {
+        return eStudentType;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-    public Date getCreatedDate(){
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void seteStudentType(EStudentType eStudentType) {
+        this.eStudentType = eStudentType;
     }
 
     public Double getMidTerm() {
@@ -118,18 +126,37 @@ public class StudentDto implements Serializable {
     }
 
     public Double getResultTerm() {
-        return resultTerm;
+        return resultTerm!=null ? resultTerm : 0.0;
     }
 
     public void setResultTerm(Double resultTerm) {
+        if(resultTerm ==null){
+            this.resultTerm=0.0;
+        }
         this.resultTerm = resultTerm;
     }
 
-    public EStudentType geteStudentType() {
-        return eStudentType;
+    public String getStatus() {
+        return status;
     }
 
-    public void seteStudentType(EStudentType eStudentType) {
-        this.eStudentType = eStudentType;
+    public void setStatus(String status) {
+        this.status = status;
     }
-}
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+} //end Student
