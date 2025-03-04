@@ -8,20 +8,21 @@ abstract public class PersonDto {
     protected Integer id;
     protected String name;
     protected String surname;
-    protected LocalDate birthDate;
-    protected Date createdDate;
+    //protected String emailAddress;
+    //protected String password;
+    protected LocalDate birthDate; // Doğum günü
+    protected Date createdDate;    // Sistem otomatik tarihi
 
-    /// Parametresiz Constructor
+    // parametresiz constructor
     public PersonDto() {
         this.id = 0;
         this.name = "name unknow";
         this.surname = "surname unknow";
-        this.birthDate = birthDate;
-        this.createdDate= new Date(System.currentTimeMillis());
-
+        this.birthDate = LocalDate.now();
+        this.createdDate = new Date(System.currentTimeMillis());
     }
 
-    /// Parametreli constructor
+    // parametreli constructor
     public PersonDto(Integer id, String name, String surname, LocalDate birthDate) {
         this.id = id;
         this.name = name;
@@ -30,7 +31,7 @@ abstract public class PersonDto {
         this.createdDate = new Date(System.currentTimeMillis());
     }
 
-    /// To string
+    // toString
     @Override
     public String toString() {
         return "PersonDto{" +
@@ -42,10 +43,10 @@ abstract public class PersonDto {
                 '}';
     }
 
-    /// Method
+    // Method
     abstract public void displayInfo();
 
-    // Getter and Setter
+    // Getter
     public Integer getId() {
         return id;
     }
@@ -85,4 +86,5 @@ abstract public class PersonDto {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
 }

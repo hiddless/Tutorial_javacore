@@ -8,7 +8,6 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 /// Lombok
 @AllArgsConstructor
@@ -28,7 +27,6 @@ public class StudentDto extends PersonDto implements Serializable {
     private Double resultTerm;   // Sonuç Notu: (Vize%40 + Final%60)
     private String status;       // Geçti mi ? Kaldı mı ?
 
-
     // static (Nesne boyunca 1 kere oluşturulur)
     static {
         System.out.println(SpecialColor.BLUE + "static StudentDto Yüklendi" + SpecialColor.RESET);
@@ -37,33 +35,33 @@ public class StudentDto extends PersonDto implements Serializable {
     // Parametresiz Constructor
     public StudentDto() {
         super();
-        this.midTerm=0.0;
-        this.finalTerm=0.0;
-        this.resultTerm=0.0;
-        this.resultTerm=0.0; // varsayılan olarak
+        this.midTerm = 0.0;
+        this.finalTerm = 0.0;
+        this.resultTerm = 0.0;
+        this.resultTerm = 0.0; // varsayılan olarak
     }
 
     // toString
     @Override
     public String toString() {
-        return super.toString()+   "StudentDto{" +
+        return super.toString() + "StudentDto{" +
                 "eStudentType=" + eStudentType +
                 ", midTerm=" + midTerm +
                 ", finalTerm=" + finalTerm +
                 ", resultTerm=" + resultTerm +
                 ", status='" + status + '\'' +
-                "} " ;
+                "} ";
     }
 
     @Override
     public void displayInfo() {
-        System.out.println("Öğrenci "+name+" " +surname+" "+birthDate);
+        System.out.println("Öğrenci " + name + " " + surname + " " + birthDate);
     }
 
     // Parametreli Constructor
-    public StudentDto(Integer id, String name, String surname, LocalDate birthDate,Double midTerm, Double finalTerm,EStudentType eStudentType) {
+    public StudentDto(Integer id, String name, String surname, LocalDate birthDate, Double midTerm, Double finalTerm, EStudentType eStudentType) {
         // Üst atadan gelen (StudentDto)
-        super(id,name,surname,birthDate);
+        super(id, name, surname, birthDate);
         // this: Local
         this.midTerm = midTerm;
         this.finalTerm = finalTerm;
@@ -116,12 +114,12 @@ public class StudentDto extends PersonDto implements Serializable {
     }
 
     public Double getResultTerm() {
-        return resultTerm!=null ? resultTerm : 0.0;
+        return resultTerm != null ? resultTerm : 0.0;
     }
 
     public void setResultTerm(Double resultTerm) {
-        if(resultTerm ==null){
-            this.resultTerm=0.0;
+        if (resultTerm == null) {
+            this.resultTerm = 0.0;
         }
         this.resultTerm = resultTerm;
     }
@@ -133,8 +131,5 @@ public class StudentDto extends PersonDto implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
 
 } //end Student
