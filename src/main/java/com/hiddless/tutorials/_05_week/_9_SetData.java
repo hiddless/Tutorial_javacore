@@ -115,7 +115,7 @@ public class _9_SetData {
     }
 
     //////////////////////////////////////////////////////
-    // TREESET: Tekrarsız küçükten büyüğe doğru
+    /// TREESET: Tekrarsız küçükten büyüğe doğru
     public static void treeSet(){
         // Diamon operators: 1.7
         Set<String> list= new TreeSet<>();
@@ -162,7 +162,7 @@ public class _9_SetData {
         System.out.println( Collections.binarySearch(list,"java se-1"));*/
 
         System.out.println("\n** METHOD REFERANCES ********************");
-        // Method Referans
+        /// Method Referans
         list.forEach(System.out::println);
     }
 
