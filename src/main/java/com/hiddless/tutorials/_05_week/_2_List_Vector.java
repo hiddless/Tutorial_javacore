@@ -21,7 +21,7 @@ public class _2_List_Vector {
         }
     }
 
-    // VECTOR (GENERICS)
+    /// VECTOR (GENERICS)
     private static void vectorGenericsData(){
         Vector<String> vector= new Vector<String> ();
         vector.add("London");;
@@ -37,7 +37,7 @@ public class _2_List_Vector {
         }
     }
 
-    // VECTOR (SPECIAL SPACE AREA)
+    /// VECTOR (SPECIAL SPACE AREA)
     private static void vectorSpecialGenericsData(){
         Vector<String> vector= new Vector<String> (4);
         vector.add("London");;
