@@ -1,7 +1,10 @@
 package com.hiddless.dao;
 
+import com.hiddless.dto.TeacherDto;
+
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 public interface IDaoGenerics<T> {
 
@@ -11,7 +14,7 @@ public interface IDaoGenerics<T> {
 
     /// FindbyName
     T findByName(String name);
-    T findById(int id);
+    Optional<TeacherDto> findById(int id);
 
     /// List
     List<T> list();
@@ -20,7 +23,7 @@ public interface IDaoGenerics<T> {
     T update(int id, T t);
 
     /// Delete
-    T delete(int id);
+    Optional<TeacherDto> delete(int id);
 
     /// Chooise
     void chooise();

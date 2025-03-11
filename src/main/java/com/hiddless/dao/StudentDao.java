@@ -2,6 +2,7 @@ package com.hiddless.dao;
 
 import com.hiddless.dto.EStudentType;
 import com.hiddless.dto.StudentDto;
+import com.hiddless.dto.TeacherDto;
 import com.hiddless.exceptions.StudentNotFoundException;
 import com.hiddless.util.SpecialColor;
 
@@ -269,7 +270,7 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
 
     // FIND BY ID
     @Override
-    public StudentDto findById(int id) {
+    public Optional<TeacherDto> findById(int id) {
         return null;
     }
 
@@ -300,7 +301,7 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
 
     // Öğrenci Sil
     @Override
-    public StudentDto delete(int id) {
+    public Optional<TeacherDto> delete(int id) {
         //studentDtoList.removeIf(temp -> temp.getId() == id);
         boolean removed = studentDtoList.removeIf(temp -> temp.getId() == id);
         if (removed) {

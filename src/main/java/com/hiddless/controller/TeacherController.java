@@ -6,19 +6,19 @@ import com.hiddless.dto.TeacherDto;
 import com.hiddless.util.SpecialColor;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class TeacherController implements IDaoGenerics<TeacherDto> {
-
-    /// INJECTION
+    // INJECTION
     private final TeacherDao teacherDao;
 
-    /// Parametresiz Constructor
+    // Parametresiz Constructor
     public TeacherController() {
         this.teacherDao = new TeacherDao();
     }
 
-    /// CREATE
+    // CREATE
     @Override
     public TeacherDto create(TeacherDto teacherDto) {
         TeacherDto createdTeacher = teacherDao.create(teacherDto);
@@ -29,36 +29,36 @@ public class TeacherController implements IDaoGenerics<TeacherDto> {
     }
 
 
-    /// FIND BY NAME
+    // FIND BY NAME
     @Override
     public TeacherDto findByName(String name) {
-        return teacherDao.findByName(name);
+        return Optional.of(teacherDao.findByName(name)) ;
     }
 
     @Override
-    public TeacherDto findById(int id) {
+    public Optional<TeacherDto> findById(int id) {
         return null;
     }
 
-    /// LIST
+    // LIST
     @Override
     public List<TeacherDto> list() {
         return teacherDao.list();
     }
 
-    /// UPDATE
+    // UPDATE
     @Override
-    public TeacherDto update(int id, TeacherDto teacherDto) {
-        return teacherDao.update(id, teacherDto);
+    public Optional<TeacherDto> update(int id, TeacherDto teacherDto) {
+        return Optional.of(teacherDao.update(id, teacherDto));
     }
 
-    /// DELETE
+    // DELETE
     @Override
-    public TeacherDto delete(int id) {
-        return teacherDao.delete(id);
+    public Optional<TeacherDto> delete(int id) {
+        return Optional.of(teacherDao.delete(id));
     }
 
-    /// CHOOISE(Switch-case)
+    // CHOOISE(Switch-case)
     @Override
     public void chooise() {
         teacherDao.chooise();

@@ -3,8 +3,10 @@ package com.hiddless.controller;
 import com.hiddless.dao.IDaoGenerics;
 import com.hiddless.dao.StudentDao;
 import com.hiddless.dto.StudentDto;
+import com.hiddless.dto.TeacherDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public class StudentController implements IDaoGenerics<StudentDto> {
 
@@ -29,7 +31,7 @@ public class StudentController implements IDaoGenerics<StudentDto> {
     }
 
     @Override
-    public StudentDto findById(int id) {
+    public Optional<TeacherDto> findById(int id) {
         return null;
     }
 
@@ -47,7 +49,7 @@ public class StudentController implements IDaoGenerics<StudentDto> {
 
     /// Delete
     @Override
-    public StudentDto delete(int id){
+    public Optional<TeacherDto> delete(int id){
         return studentDao.delete(id);
     }
 
